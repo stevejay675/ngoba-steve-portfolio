@@ -289,7 +289,7 @@ export default function Projects() {
   ];
 
   return (
-    <section className="bg-white py-20" id="projects">
+    <section className="bg-gray-50 py-20" id="projects">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-lg font-medium text-gray-700">
