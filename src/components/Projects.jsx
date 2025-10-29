@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { ExternalLink, Github, CheckCircle2, Clock } from "lucide-react";
+import { ExternalLink, Github, CheckCircle2, Clock, CheckCircle } from "lucide-react";
 import {
   useFloating,
   autoUpdate,
@@ -123,7 +123,7 @@ function ProjectCard({ project, index }) {
           ref={refs.setFloating}
           style={floatingStyles}
           {...getFloatingProps()}
-          className="hidden md:block z-[9999] w-96 bg-white shadow-2xl border border-gray-200 rounded-xl overflow-visible"
+          className="hidden md:block z-[9999] w-80 bg-white shadow-2xl border border-gray-200 rounded-xl overflow-visible"
         >
           <FloatingArrow
             ref={arrowRef}
@@ -133,27 +133,42 @@ function ProjectCard({ project, index }) {
           />
 
           <div className="p-6">
-            <div className="flex items-start justify-between mb-4">
-              <h3 className="text-2xl font-bold text-gray-900 pr-4">
+            <div className="flex items-start items-center justify-between mb-4">
+              <h3 className="text-base font-bold text-gray-900 pr-4">
                 {project.title}
               </h3>
               <div className="flex items-center gap-1.5 text-sm whitespace-nowrap">
                 {project.status === "completed" ? (
                   <>
                     <CheckCircle2 size={16} className="text-green-600" />
-                    <span className="text-green-600 font-medium">Completed</span>
+                    {/* <span className="text-green-600 font-medium">Completed</span> */}
                   </>
-                ) : (
+                ) : ( 
                   <>
                     <Clock size={16} className="text-orange-500" />
-                    <span className="text-orange-500 font-medium">In Progress</span>
+                    {/* <span className="text-orange-500 font-medium">In Progress</span> */}
                   </>
                 )}
               </div>
             </div>
 
-            <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+            <p className="text-gray-600 mb-4 text-sm leading-relaxed">
               {project.fullDescription}
+            </p>
+
+            <p className="flex gap-3 mb-4 text-xs">
+              <CheckCircle />
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, quisquam?
+            </p>
+
+            <p className="flex gap-3 mb-4 text-xs">
+              <CheckCircle />
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, quisquam?
+            </p>
+
+            <p className="flex gap-3 mb-4 text-xs">
+              <CheckCircle />
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, quisquam?
             </p>
 
             <div className="mb-6">
@@ -177,18 +192,18 @@ function ProjectCard({ project, index }) {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 text-white bg-black hover:bg-[#e99d33] px-4 py-3 rounded-lg transition-colors font-medium text-sm"
+                className="flex-1 flex items-center justify-center gap-2 text-white bg-[#e99d33] px-4 py-3 rounded-lg transition-colors font-medium text-sm"
               >
                 <ExternalLink size={16} /> Live Demo
               </a>
-              <a
+              {/* <a
                 href={project.code}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 border-2 border-black hover:bg-[#FFAF3F] hover:text-white hover:border-[#FFAF3F] px-4 py-3 rounded-lg transition-colors font-medium text-sm"
               >
                 <Github size={16} /> Code
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Twitter, Mail, Book } from 'lucide-react';
+import { Github, Linkedin, Twitter, MessageCircle,  Mail, Book } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -48,21 +48,21 @@ export default function Hero() {
               <a 
                 href="https://twitter.com/yourusername" 
                 target="_blank"
-                title='Twitter'
+                title='Whatsapp'
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full flex items-center justify-center border-2  text-gray-700 border-[#FFAF3F] hover:text-[#FFAF3F] transition-colors duration-200"
               >
-                <Twitter size={24} />
+                <MessageCircle size={24} />
               </a>
               <a 
-                href="mailto:your.email@example.com"
+                href="mailto:stevejay675@gmail.com"
                 title='Send a mail'
                 className="w-12 h-12 rounded-full flex items-center justify-center border-2  text-gray-700 border-[#FFAF3F] hover:text-[#FFAF3F] transition-colors duration-200"
               >
                 <Mail size={24} />
               </a>
               <a 
-                href="mailto:your.email@example.com"
+                href="ngoba-steve-cv.pdf"
                 title='View Resume'
                 className="w-12 h-12 rounded-full flex items-center justify-center border-2  text-gray-700 border-[#FFAF3F] hover:text-[#FFAF3F] transition-colors duration-200"
               >

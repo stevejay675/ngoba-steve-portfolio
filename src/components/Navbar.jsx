@@ -85,8 +85,9 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="/cv.pdf"
-                download
+                href="/ngoba-steve-cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-[#FFAF3F] text-white rounded-full px-6 py-2 font-semibold hover:bg-[#ff9f1f] transition-colors duration-200"
               >
                 Download CV
@@ -160,8 +161,7 @@ export default function Navbar() {
           {/* Download CV Button */}
           <div className="absolute hidden bottom-0 left-0 right-0 p-6 border-t border-gray-100 bg-white">
             <a
-              href="/cv.pdf"
-              download
+              href="/ngoba-steve-cv.pdf"
               className="block text-center bg-[#FFAF3F] text-white rounded-full px-6 py-3.5 font-semibold hover:bg-[#ff9f1f] transition-all duration-200 "
               onClick={() => setIsOpen(false)}
               style={{
