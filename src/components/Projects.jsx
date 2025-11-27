@@ -51,22 +51,22 @@ function ProjectCard({ project, index }) {
       <div
         ref={refs.setReference}
         {...getReferenceProps()}
-        className="overflow-hidden transition-all duration-300 flex flex-col cursor-pointer"
+        className="overflow-hidden transition-all duration-300 flex flex-col bg-white p-4 border border-gray-400 cursor-pointer"
          onClick={() => setMobileOverlay(!mobileOverlay)}
       >
         <div 
-          className="relative group"
+          className="relative group overflow-hidden"
          
         >
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-56 rounded-md object-cover"
+            className="w-full h-56 rounded-sm object-cover"
           />
           
           {/* Mobile Overlay */}
           <div
-            className={`md:hidden absolute inset-0 bg-[#FFAF3F]/95 flex items-center justify-center gap-6 transition-transform duration-300 ${
+            className={`md:hidden absolute inset-0 bg-[#FFAF3F]/95 flex items-center justify-center  transition-transform duration-300 ${
               mobileOverlay ? 'translate-x-0' : 'translate-x-full'
             }`}
             style={{ transformOrigin: 'right' }}
@@ -192,7 +192,7 @@ function ProjectCard({ project, index }) {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 text-white bg-[#e99d33] px-4 py-3 rounded-lg transition-colors font-medium text-sm"
+                className="flex-1 flex items-center justify-center gap-2 text-white bg-[#e99d33] px-4 py-3 rounded-sm transition-colors font-medium text-sm"
               >
                 <ExternalLink size={16} /> Live Demo
               </a>
@@ -200,7 +200,7 @@ function ProjectCard({ project, index }) {
                 href={project.code}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 border-2 border-black hover:bg-[#FFAF3F] hover:text-white hover:border-[#FFAF3F] px-4 py-3 rounded-lg transition-colors font-medium text-sm"
+                className="flex-1 flex items-center justify-center gap-2 border-2 border-black hover:bg-[#FFAF3F] hover:text-white hover:border-[#FFAF3F] px-4 py-3 rounded-sm transition-colors font-medium text-sm"
               >
                 <Github size={16} /> Code
               </a> */}

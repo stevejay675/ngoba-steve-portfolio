@@ -76,7 +76,7 @@ export default function Hero() {
           <div className="flex justify-center md:justify-end">
             <div className="w-full max-w-lg">
               <img 
-                src="/images/hero.png" 
+                src="/images/banner.png" 
                 alt="Developer workspace"
                 className="w-full h-auto"
               />

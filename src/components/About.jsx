@@ -1,7 +1,11 @@
+'use client';
 import React from "react";
 import { Award, GraduationCap } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function About() {
+
+  const router = useRouter();
   return (
     <section className="bg-gray-50 py-20  relative" id="about">
 
@@ -29,7 +33,7 @@ export default function About() {
           {/* Left - Image (50% on desktop) */}
           <div className="w-full md:w-1/2 flex justify-center">
             <img
-              src="/images/me3.jpg"
+              src="/images/Me1.jpg"
               alt="About me"
               className="w-full h-auto rounded-2xl object-cover"
             />
@@ -40,7 +44,7 @@ export default function About() {
             {/* Qualification Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Experience Card */}
-              <div className="border border-gray-500 rounded-2xl p-8 flex flex-col items-center text-center space-y-2 transition-all duration-200">
+              <div className="border border-gray-400 rounded-sm p-8 flex flex-col items-center text-center space-y-2 transition-all duration-200">
                 <Award size={32} className="text-[#FFAF3F]" />
                 <h3 className="text-xl font-bold text-gray-900">Experience</h3>
                 <p className="text-gray-600">3+ year</p>
@@ -48,7 +52,7 @@ export default function About() {
               </div>
 
               {/* Education Card */}
-              <div className="border border-gray-500 rounded-2xl px-4 py-8 flex flex-col items-center text-center space-y-3 transition-all duration-200">
+              <div className="border border-gray-400  rounded-sm px-4 py-8 flex flex-col items-center text-center space-y-3 transition-all duration-200">
                 <GraduationCap size={32} className="text-[#FFAF3F]" />
                 <h3 className="text-xl font-bold text-gray-900">Education</h3>
                 <p className="text-gray-600">B.Eng in Software Engineering</p>
@@ -74,7 +78,7 @@ export default function About() {
             </p>
 
             <div className="flex items-center gap-2">
-                <button className="py-3 px-6 rounded-full bg-primary text-white">View my Resume</button>
+                <button className="py-3 px-6 rounded-full bg-primary hover:bg-[#ff9f1f] text-white cursor-pointer transition" onClick={() => router.push('/ngoba-steve-cv.pdf')}>View my Resume</button>
                 <img src="/images/sh.png" alt="" className="w-14 h-auto"/>
             </div>
           </div>

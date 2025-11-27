@@ -4,6 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --color-primary: #FFAF3F;
+  --color-footer: hsl(35, 100%, 52%);
 }
 
 @theme inline {
@@ -12,6 +13,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-primary: var(--color-primary);
+  --color-footer: var(--color-footer);
 }
 
 html{

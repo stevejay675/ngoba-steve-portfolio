@@ -11,14 +11,14 @@ const Skills = () => {
   return (
     <div className=" bg-white flex items-center justify-center overflow-hidden py-12">
       <div className="w-full">
-<div className="text-center mb-16">
+{/* <div className="text-center mb-16">
           <span className="text-lg font-medium">
             Get to know more
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">
             Skills and expertise
           </h2>
-        </div>
+        </div> */}
 
         {/* Scrolling Rows Container */}
         <div className="space-y-6">

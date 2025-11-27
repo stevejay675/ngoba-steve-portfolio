@@ -24,7 +24,7 @@ const ContactSection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center px-6 py-20">
+    <div className=" bg-white flex items-center justify-center px-6 py-20">
       <div className="max-w-6xl w-full grid md:grid-cols-2 gap-16 md:gap-20">
         
         {/* Left Content */}

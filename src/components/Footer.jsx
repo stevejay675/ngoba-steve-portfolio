@@ -24,20 +24,20 @@ const Footer = () => {
   };
 
   return (
-    <div className="relative bg-gray-50">
+    <div className="relative bg-gray-50 p-4 md:p-8 rounded-3xl">
       {/* Spacer for elevated form */}
       <div className="h-32 md:h-40"></div>
       
       {/* Footer Section */}
-      <footer className="relative bg-gray-900 overflow-hidden">
+      <footer className="relative bg-black overflow-hidden rounded-3xl">
         {/* Background Image with Overlay */}
         <div 
           className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
+          // style={{
+          //   backgroundImage: 'url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80)',
+          //   backgroundSize: 'cover',
+          //   backgroundPosition: 'center'
+          // }}
         ></div>
         
         {/* Content Container */}
