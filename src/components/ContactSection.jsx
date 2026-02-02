@@ -1,134 +1,186 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, MapPin, Send } from 'lucide-react';
+import { Send, Phone, Mail, MapPin, Loader2 } from 'lucide-react';
 
-const ContactSection = () => {
+export default function ContactSection({ preselectedService }) {
+  // Form State
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
+    service: preselectedService || 'Cloud Infrastructure',
     message: ''
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
-  };
+  // Status States
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState({ type: '', message: '' });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus({ type: '', message: '' });
+
+    // Simple Validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+      setStatus({ type: 'error', message: 'Please fill in all fields.' });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: 'Request sent successfully!' });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: preselectedService || 'Cloud Infrastructure',
+          message: ''
+        });
+      } else {
+        throw new Error(result.error || 'Something went wrong');
+      }
+    } catch (err) {
+      setStatus({ type: 'error', message: err.message });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className=" bg-white flex items-center justify-center px-6 py-20">
-      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-16 md:gap-20">
-        
-        {/* Left Content */}
-        <div className="flex flex-col justify-center">
-          <h2 className="text-5xl md:text-5xl font-bold text-gray-900 mb-6">
-            Let's work<br />together
-          </h2>
-          <p className="text-gray-600 text-lg mb-12 leading-relaxed">
-            Have a project in mind or just want to chat? Drop me a message and I'll get back to you as soon as possible.
-          </p>
+    <section className="relative py-24 bg-[#f8fafc] overflow-hidden" id="contact">
+      <div className="absolute hidden  md:block top-0 -right-[30px] w-1/2 md:w-1/3 h-full bg-black -skew-x-12 translate-x-20" />
+      
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <Mail className="w-5 h-5 text-gray-400 mt-1" />
-              <div>
-                <p className="text-gray-500 text-sm mb-1">Email</p>
-                <a href="mailto:hello@example.com" className="text-gray-900 font-medium hover:text-gray-600 transition-colors">
-                  hello@example.com
-                </a>
+          <div>
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-none"
+            style={{
+              textShadow: '4px 4px 0px rgba(0,0,0,0.5)',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            GET IN
+            <br className="hidden md:block"/>
+            <span className="text-yellow-500 pb-4 ml-3 md:ml-0">TOUCH</span>
+          </h2>
+
+          <p className="text-lg text-gray-600 max-w-lg leading-relaxed">
+              I am open to any questions, projects, or projects ideas, or if you just want to say "Hello", get to me through any of the provided contact info.
+            </p>
+          </div>
+
+          <div className="bg-white shadow py-8 px-6 md:px-8 md:p-10 rounded-md border border-gray-100 min-h-[700px]">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-white ml-1">Full Name</label>
+                  <input 
+                    required
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    type="text" 
+                    placeholder="John Doe"
+                    className="w-full px-5 py-4  focus:border-primary-500 focus:bg-white focus:outline-none  border-b border-gray-600   transition-all text-gray-900"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-white ml-1">Email Address</label>
+                  <input 
+                    required
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    type="email" 
+                    placeholder="john@company.com"
+                    className="w-full px-5 py-4  border-b focus:border-primary-500 focus:bg-white focus:outline-none border-gray-600 transition-all text-gray-900"
+                  />
+                </div>
               </div>
-            </div>
-            
-            <div className="flex items-start gap-4">
-              <MapPin className="w-5 h-5 text-gray-400 mt-1" />
-              <div>
-                <p className="text-gray-500 text-sm mb-1">Location</p>
-                <p className="text-gray-900 font-medium">Douala, Cameroon</p>
+
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-white ml-1">Phone Number</label>
+                <input 
+                  required
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  type="tel" 
+                  placeholder="+237 XXX XXX XXX"
+                  className="w-full px-5 py-4  border-b border-gray-600  focus:border-primary-500 focus:bg-white focus:outline-none transition-all text-gray-900"
+                />
               </div>
-            </div>
-          </div> */}
+
+              {/* <div className="space-y-2">
+                <label className="text-sm font-bold text-white ml-1">Select Service</label>
+                <select 
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  disabled={!!preselectedService}
+                  className={`w-full px-5 py-4   border-b border-gray-600  focus:outline-none transition-all text-gray-900  ${preselectedService ? 'opacity-70 cursor-not-allowed' : ''}`}
+                >
+                  <option>Cloud Infrastructure</option>
+                  <option>Web Development</option>
+                  <option>Mobile App Development</option>
+                  <option>Hardware Procurement</option>
+                  <option>IT Training & Consulting</option>
+                  <option>CCTV & Security</option>
+                </select>
+              </div> */}
+
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-white ml-1">Message</label>
+                <textarea 
+                  required
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4} 
+                  placeholder="Tell us about your project..."
+                  className="w-full px-5 py-4   border-b border-gray-600 focus:border-primary-500 focus:bg-white focus:outline-none transition-all text-gray-900 resize-none"
+                />
+              </div>
+
+              {/* Status Feedback */}
+              {status.message && (
+                <div className={`p-4 rounded-md text-sm font-bold ${status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                  {status.message}
+                </div>
+              )}
+
+              <button 
+                disabled={loading}
+                type="submit"
+                className="w-full py-4 bg-yellow-500 text-white rounded-full font-bold flex items-center justify-center gap-3 hover:bg-primary-700 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {loading ? (
+                  <>Processing... <Loader2 className="w-5 h-5 animate-spin" /></>
+                ) : (
+                  <>Send Request <Send className="w-5 h-5" /></>
+                )}
+              </button>
+            </form>
+          </div>
         </div>
-
-        {/* Right Form */}
-        <div className="flex flex-col justify-center">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            
-            {/* Name Input */}
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-transparent border-b-2 border-gray-900 focus:border-gray-900 focus:bg-white transition-all outline-none"
-                // placeholder="Your name"
-              />
-            </div>
-
-            {/* Email Input */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-transparent border-b-2 border-gray-900 focus:border-gray-900 focus:bg-white transition-all outline-none"
-                // placeholder="your.email@example.com"
-              />
-            </div>
-
-            {/* Message Textarea */}
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows="5"
-                className="w-full px-4 py-3 bg-transparent border-b-2 border-gray-900 focus:border-gray-900 focus:bg-white transition-all outline-none resize-none"
-                // placeholder="Tell me about your project..."
-              />
-            </div>
-
-            {/* Submit Button */}
-            <div className="flex md:flex-row md:items-center md:justify-between gap-4">
-                <button
-              type="submit"
-              className="w-full bg-primary rounded-full text-white py-4 px-6 font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 group"
-            >
-              Send Message
-              
-            </button>
-            <img src="/images/sh-b.png" alt="" className='w-14 h-auto'/>
-            </div>
-          </form>
-        </div>
-
       </div>
-    </div>
+    </section>
   );
-};
-
-export default ContactSection;
+}

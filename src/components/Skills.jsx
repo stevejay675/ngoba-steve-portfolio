@@ -9,7 +9,7 @@ const Skills = () => {
   ];
 
   return (
-    <div className=" bg-white flex items-center justify-center overflow-hidden py-12">
+    <section className=" bg-white flex items-center justify-center overflow-hidden py-12" id='skills'>
       <div className="w-full">
 {/* <div className="text-center mb-16">
           <span className="text-lg font-medium">
@@ -91,7 +91,7 @@ const Skills = () => {
           }
         `}</style>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,0 +1,10 @@
+<h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-none"
+            style={{
+              textShadow: '4px 4px 0px rgba(0,0,0,0.5)',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            GET IN
+            <br />
+            <span className="text-yellow-500">TOUCH</span>
+          </h2>

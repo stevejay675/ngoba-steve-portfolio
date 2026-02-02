@@ -23,19 +23,26 @@ export default function About() {
           <span className="text-lg font-medium">
             Get to know more
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">
-            About Me
+          <h2 className="text-5xl md:text-5xl font-black uppercase tracking-tighter mt-3 leading-none"
+            style={{
+              textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            About
+            {/* <br className="hidden md:block"/> */}
+            <span className="text-yellow-500 pb-4 ml-3">Me</span>
           </h2>
         </div>
 
         {/* Content */}
         <div className="flex flex-col md:flex-row gap-8 items-center">
           {/* Left - Image (50% on desktop) */}
-          <div className="w-full md:w-1/2 flex justify-center">
+          <div className="w-full md:w-1/2 flex justify-center ">
             <img
-              src="/images/Me1.jpg"
+              src="/images/meee.png"
               alt="About me"
-              className="w-full h-auto rounded-2xl object-cover"
+              className="w-full h-auto object-cover grayscale border-b-6"
             />
           </div>
 
@@ -48,7 +55,7 @@ export default function About() {
                 <Award size={32} className="text-[#FFAF3F]" />
                 <h3 className="text-xl font-bold text-gray-900">Experience</h3>
                 <p className="text-gray-600">3+ year</p>
-                <p className="text-gray-600">Frontend Development</p>
+                <p className="text-gray-600">Full Stack Development</p>
               </div>
 
               {/* Education Card */}
@@ -56,7 +63,10 @@ export default function About() {
                 <GraduationCap size={32} className="text-[#FFAF3F]" />
                 <h3 className="text-xl font-bold text-gray-900">Education</h3>
                 <p className="text-gray-600">B.Eng in Software Engineering</p>
-                <p className="text-gray-600">University of Buea</p>
+                <div className="flex gap-3 items-center">
+                  <img src="/images/ubLogo.png" className="w-8 h-8" alt="" />
+                  <p className="text-gray-600">University of Buea, cm</p>
+                </div>
               </div>
             </div>
 
@@ -72,14 +82,12 @@ export default function About() {
               TypeScript turning clean design into functional, intuitive user
               experiences. Over time, I’ve expanded my skills into backend
               integration, cloud services, and mobile development with React
-              Native. I enjoy solving real problems through code, learning
-              continuously, and collaborating on projects that blend design,
-              logic, and purpose.
+              Native.
             </p>
 
-            <div className="flex items-center gap-2">
-                <button className="py-3 px-6 rounded-full bg-primary hover:bg-[#ff9f1f] text-white cursor-pointer transition" onClick={() => router.push('/ngoba-steve-cv.pdf')}>View my Resume</button>
-                <img src="/images/sh.png" alt="" className="w-14 h-auto"/>
+            <div className="flex items-center gap-3">
+                <button className="py-3 px-6 rounded-full w-full md:w-fit  bg-gray-900 hover:bg-[#ff9f1f] text-white cursor-pointer transition" onClick={() => router.push('/ngoba-steve-cv.pdf')}>View my Resume</button>
+                <img src="/images/sh-b.png" alt="Signature" className="w-auto h-16 object-contain" />
             </div>
           </div>
         </div>

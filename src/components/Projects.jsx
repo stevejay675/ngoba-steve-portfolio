@@ -1,6 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { ExternalLink, Github, CheckCircle2, Clock, CheckCircle } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  CheckCircle2,
+  Clock,
+  CheckCircle,
+} from "lucide-react";
 import {
   useFloating,
   autoUpdate,
@@ -52,24 +58,21 @@ function ProjectCard({ project, index }) {
         ref={refs.setReference}
         {...getReferenceProps()}
         className="overflow-hidden transition-all duration-300 flex flex-col bg-white p-4 border border-gray-400 cursor-pointer"
-         onClick={() => setMobileOverlay(!mobileOverlay)}
+        onClick={() => setMobileOverlay(!mobileOverlay)}
       >
-        <div 
-          className="relative group overflow-hidden"
-         
-        >
+        <div className="relative group overflow-hidden">
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-56 rounded-sm object-cover"
+            className="w-full h-auto  rounded-sm object-cover"
           />
-          
+
           {/* Mobile Overlay */}
           <div
             className={`md:hidden absolute inset-0 bg-[#FFAF3F]/95 flex items-center justify-center  transition-transform duration-300 ${
-              mobileOverlay ? 'translate-x-0' : 'translate-x-full'
+              mobileOverlay ? "translate-x-0" : "translate-x-full"
             }`}
-            style={{ transformOrigin: 'right' }}
+            style={{ transformOrigin: "right" }}
           >
             <a
               href={project.demo}
@@ -79,7 +82,7 @@ function ProjectCard({ project, index }) {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                <ExternalLink size={24} className="text-gray-800"/>
+                <ExternalLink size={24} className="text-gray-800" />
               </div>
               <span className="text-sm font-medium">Live Demo</span>
             </a>
@@ -91,7 +94,7 @@ function ProjectCard({ project, index }) {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                <Github size={24} className="text-gray-800"/>
+                <Github size={24} className="text-gray-800" />
               </div>
               <span className="text-sm font-medium">Code</span>
             </a>
@@ -143,7 +146,7 @@ function ProjectCard({ project, index }) {
                     <CheckCircle2 size={16} className="text-green-600" />
                     {/* <span className="text-green-600 font-medium">Completed</span> */}
                   </>
-                ) : ( 
+                ) : (
                   <>
                     <Clock size={16} className="text-orange-500" />
                     {/* <span className="text-orange-500 font-medium">In Progress</span> */}
@@ -156,20 +159,14 @@ function ProjectCard({ project, index }) {
               {project.fullDescription}
             </p>
 
-            <p className="flex gap-3 mb-4 text-xs">
-              <CheckCircle />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, quisquam?
-            </p>
-
-            <p className="flex gap-3 mb-4 text-xs">
-              <CheckCircle />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, quisquam?
-            </p>
-
-            <p className="flex gap-3 mb-4 text-xs">
-              <CheckCircle />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, quisquam?
-            </p>
+            <div>
+              {project.archievements.map((archievement, i) => (
+                <p className="flex gap-3 mb-4 text-xs" key={i}>
+                  <CheckCircle />
+                  {archievement}
+                </p>
+              ))}
+            </div>
 
             <div className="mb-6">
               <h4 className="text-sm font-semibold text-gray-900 mb-3">
@@ -220,11 +217,16 @@ export default function Projects() {
         "A platform that connects developers and volunteers to collaborate on impactful projects.",
       fullDescription:
         "AidSync is a comprehensive platform designed to bridge the gap between skilled developers and meaningful volunteer opportunities. Built with modern web technologies, it features real-time collaboration tools, project management dashboards, and impact tracking metrics.",
-      image: "/images/project1.jpg",
+      image: "/images/aidsync3.png",
       tech: ["Next.js", "TypeScript", "Tailwind", "Node.js"],
       demo: "https://aidsync.io",
       code: "https://github.com/yourusername/aidsync",
       status: "completed",
+      archievements: [
+        "Handled UI/UX design, ensuring a clean responsive layouts",
+        "Implemented Smooth theme mode, to allow users choose whats best",
+        "did the overall API integration, server side data fetching, server side actions in a robust way",
+      ],
     },
     {
       title: "Portfolio Website",
@@ -232,59 +234,126 @@ export default function Projects() {
         "A modern personal portfolio designed with Next.js and TailwindCSS showcasing my skills and work.",
       fullDescription:
         "A sleek and responsive portfolio website featuring smooth animations, dark mode support, and optimized performance. Showcases projects, skills, and professional experience with an intuitive user interface.",
-      image: "/images/project2.jpg",
+      image: "/images/portfolio2.png",
       tech: ["React", "Next.js", "TailwindCSS"],
-      demo: "https://yourportfolio.com",
-      code: "https://github.com/yourusername/portfolio",
+      demo: "https://ngoba-steve-portfolio.vercel.app/",
+      code: "https://github.com/stevejay675/ngoba-steve-portfolio",
       status: "completed",
+      archievements: [
+        "Implemented a dynamic projects display using server side data fetching techniques",
+        "Implemented Smooth theme mode, to allow users choose whats best",
+        "did the overall API integration, server side data fetching, server side actions in a robust way",
+      ],
     },
     {
-      title: "Taskify",
+      title: "Ledgr",
       description:
-        "A productivity web app for managing tasks, tracking progress, and syncing across devices.",
+        "A productivity Expense tracking Mobile application for tracking income and expenses for individuals.",
       fullDescription:
-        "Taskify is a powerful task management application with real-time synchronization, priority labeling, deadline tracking, and team collaboration features. Built with Firebase for seamless cross-device syncing.",
-      image: "/images/project3.jpg",
-      tech: ["React", "Firebase", "Framer Motion"],
+        "Ledgr is a powerful expense tracking application with real-time synchronization, priority labeling, deadline tracking, and team collaboration features. Built with Firebase for seamless cross-device syncing.",
+      image: "/images/legr.png",
+      tech: [
+        "React Native",
+        "Expo",
+        "NodeJs",
+        "PostgreSQL",
+        "ExpressJs",
+        "Clerk",
+        "Redis",
+      ],
       demo: "#",
-      code: "#",
+      code: "https://github.com/stevejay675/ledgr",
       status: "in-progress",
+      archievements: [
+        "created 6 screens mobile app connected with expo router, showing ui based on auth state",
+        "Implemented server side(backend) rate limiting using redis on my all APIs",
+        "proper data fetching, actions including all crud operations on transactions",
+      ],
     },
     {
-      title: "AidSync v2",
+      title: "Lost2Found",
       description:
-        "A platform that connects developers and volunteers to collaborate on impactful projects.",
+        "A lost object image matching mobile application for finding lost items using image recognition.",
       fullDescription:
-        "AidSync is a comprehensive platform designed to bridge the gap between skilled developers and meaningful volunteer opportunities. Built with modern web technologies, it features real-time collaboration tools, project management dashboards, and impact tracking metrics.",
-      image: "/images/project1.jpg",
-      tech: ["Next.js", "TypeScript", "Tailwind", "Node.js"],
+        "Lost2Found is a mobile application that uses image recognition technology to help users locate lost items. It allows users to upload photos of lost objects and matches them with similar items in a database.",
+      image: "/images/lost2found.png",
+      tech: ["React Native", "Expo", "Firebase"],
+      demo: "#",
+      code: "https://github.com/stevejay675/lostImageMatchingApp",
+      status: "in-progress",
+      archievements: [
+        "Handled app ui, structure layouts and connections showing proper",
+        "Implemented Smooth theme mode, to allow users choose whats best",
+        "did the overall API integration, server side data fetching, server side actions in a robust way",
+      ],
+    },
+    {
+      title: "LoopEats Wep App",
+      description:
+        "A modern responsive food delivery web application designed with Next.js and TailwindCSS showcasing menu, ordering and user accounts.",
+      fullDescription:
+        "A sleek and responsive food delivery web application featuring smooth animations, dark mode support, and optimized performance. Showcases menu items, ordering system, and user account management with an intuitive user interface.",
+      image: "/images/loopeats2.png",
+      tech: ["React", "Next.js", "TailwindCSS"],
+      demo: "dev.loopeats.com",
+      code: "",
+      status: "completed",
+      archievements: [
+        "Handled UI/UX design, ensuring a clean responsive layouts",
+        "Implemented Smooth theme mode, to allow users choose whats best",
+        "did the overall API integration, server side data fetching, server side actions in a robust way",
+      ],
+    },
+    {
+      title: "QuickerFill",
+      description:
+        "A Chrome extension that auto-fills forms and saves time on repetitive tasks.",
+      fullDescription:
+        "QuickerFill is a productivity Chrome extension that automatically fills out forms and web forms with Realistic mocked data, reducing repetitive data entry tasks and saving valuable time for users.",
+      image: "/images/quickerfill.png",
+      tech: ["HTML5", "CSS3", "Javascript"],
       demo: "https://aidsync.io",
       code: "https://github.com/yourusername/aidsync",
       status: "completed",
+      archievements: [
+        "Handled UI/UX design, ensuring a clean responsive layouts",
+        "Implemented Smooth theme mode, to allow users choose whats best",
+        "did the overall API integration, server side data fetching, server side actions in a robust way",
+      ],
     },
     {
-      title: "Portfolio Website v2",
+      title: "Dunamis Design",
       description:
-        "A modern personal portfolio designed with Next.js and TailwindCSS showcasing my skills and work.",
+        "A figma design project for a modern IT company service booking and tech gadgets, electronics sales with user-friendly interface and responsive design.",
       fullDescription:
-        "A sleek and responsive portfolio website featuring smooth animations, dark mode support, and optimized performance. Showcases projects, skills, and professional experience with an intuitive user interface.",
-      image: "/images/project2.jpg",
+        "Dunamis Design is a comprehensive Figma design project that envisions a modern IT company platform. It features service booking capabilities and a tech gadgets and electronics sales section, all wrapped in a user-friendly and responsive design.",
+      image: "/images/dunamis.png",
+      tech: ["Figma", "UI/UX Design"],
+      demo: "https://aidsync.io",
+      code: "https://github.com/yourusername/aidsync",
+      status: "completed",
+      archievements: [
+        "Handled UI/UX design, ensuring a clean responsive layouts",
+        "Implemented Smooth theme mode, to allow users choose whats best",
+        "did the overall API integration, server side data fetching, server side actions in a robust way",
+      ],
+    },
+    {
+      title: "LoopTech Website",
+      description:
+        "A modern responsive Cloud solutions company website designed with Next.js and TailwindCSS showcasing services, portfolio and team.",
+      fullDescription:
+        "A sleek and responsive company website featuring smooth animations, dark mode support, and optimized performance. Showcases services, portfolio, and professional team with an intuitive user interface.",
+      image: "/images/looptech2.png",
       tech: ["React", "Next.js", "TailwindCSS"],
       demo: "https://yourportfolio.com",
       code: "https://github.com/yourusername/portfolio",
       status: "completed",
-    },
-    {
-      title: "Taskify v2",
-      description:
-        "A productivity web app for managing tasks, tracking progress, and syncing across devices.",
-      fullDescription:
-        "Taskify is a powerful task management application with real-time synchronization, priority labeling, deadline tracking, and team collaboration features. Built with Firebase for seamless cross-device syncing.",
-      image: "/images/project3.jpg",
-      tech: ["React", "Firebase", "Framer Motion"],
-      demo: "#",
-      code: "#",
-      status: "in-progress",
+      archievements: [
+        "Handled UI/UX design, ensuring a clean responsive layouts",
+        "Implemented Smooth theme mode, to allow users choose whats best",
+        "did the overall API integration, server side data fetching, server side actions in a robust way",
+      ],
     },
   ];
 
@@ -293,14 +362,21 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-lg font-medium text-gray-700">
-            Explore My Major
+            Explore My
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">
-            Projects
+          <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4 leading-none"
+            style={{
+              textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            Major
+            {/* <br className="hidden md:block"/> */}
+            <span className="text-yellow-500 pb-4 ml-3">Projects</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-10">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}

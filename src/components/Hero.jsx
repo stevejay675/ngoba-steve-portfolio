@@ -14,7 +14,7 @@ export default function Hero() {
                 Ngoba Steve Jones
               </h1>
               <h2 className="text-3xl md:text-4xl font-semibold text-gray-700">
-                Frontend Developer
+                Full Stack Developer
               </h2>
               {/* <p className="text-xl text-gray-600">
                 with Backend Exposure
@@ -76,7 +76,7 @@ export default function Hero() {
           <div className="flex justify-center md:justify-end">
             <div className="w-full max-w-lg">
               <img 
-                src="/images/banner.png" 
+                src="/images/banner3.png" 
                 alt="Developer workspace"
                 className="w-full h-auto"
               />
