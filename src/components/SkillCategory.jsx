@@ -51,7 +51,7 @@ const SkillCategory = () => {
             Skills and Expertise
           </h2> */}
 
-          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 leading-none"
+          <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mt-3 leading-none"
             style={{
               textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
               letterSpacing: '-0.02em'
@@ -59,7 +59,7 @@ const SkillCategory = () => {
           >
             Skills and 
             {/* <br className="hidden md:block"/> */}
-            <span className="text-yellow-500 pb-4 ml-3">Expertise</span>
+            <span className="text-yellow-500 pb-4 ml-3">Tools</span>
           </h2>
         </div>
 
