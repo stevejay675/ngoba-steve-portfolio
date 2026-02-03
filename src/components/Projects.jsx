@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   Clock,
   CheckCircle,
+  X,
 } from "lucide-react";
 import {
   useFloating,
@@ -21,10 +22,11 @@ import {
   FloatingArrow,
   arrow,
 } from "@floating-ui/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function ProjectCard({ project, index }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [mobileOverlay, setMobileOverlay] = useState(false);
+  const [mobileDrawer, setMobileDrawer] = useState(false);
   const arrowRef = React.useRef(null);
 
   const { refs, floatingStyles, context } = useFloating({
@@ -52,13 +54,16 @@ function ProjectCard({ project, index }) {
     role,
   ]);
 
+  const hasDemo = project.demo && project.demo !== "#" && project.demo !== "";
+  const hasCode = project.code && project.code !== "#" && project.code !== "";
+
   return (
     <>
       <div
         ref={refs.setReference}
         {...getReferenceProps()}
         className="overflow-hidden transition-all duration-300 flex flex-col bg-white p-4 border border-gray-400 cursor-pointer"
-        onClick={() => setMobileOverlay(!mobileOverlay)}
+        onClick={() => setMobileDrawer(true)}
       >
         <div className="relative group overflow-hidden">
           <img
@@ -66,39 +71,6 @@ function ProjectCard({ project, index }) {
             alt={project.title}
             className="w-full h-auto  rounded-sm object-cover"
           />
-
-          {/* Mobile Overlay */}
-          <div
-            className={`md:hidden absolute inset-0 bg-[#FFAF3F]/95 flex items-center justify-center  transition-transform duration-300 ${
-              mobileOverlay ? "translate-x-0" : "translate-x-full"
-            }`}
-            style={{ transformOrigin: "right" }}
-          >
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center gap-2 text-white"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                <ExternalLink size={24} className="text-gray-800" />
-              </div>
-              <span className="text-sm font-medium">Live Demo</span>
-            </a>
-            <a
-              href={project.code}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center gap-2 text-white"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                <Github size={24} className="text-gray-800" />
-              </div>
-              <span className="text-sm font-medium">Code</span>
-            </a>
-          </div>
         </div>
 
         <div className="py-6 flex flex-col flex-grow">
@@ -119,6 +91,120 @@ function ProjectCard({ project, index }) {
           </div>
         </div>
       </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {mobileDrawer && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden fixed inset-0 bg-black/50 z-[9998] backdrop-blur-[2px]"
+              onClick={() => setMobileDrawer(false)}
+            />
+
+            {/* Drawer */}
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ 
+                type: "spring", 
+                damping: 30, 
+                stiffness: 300 
+              }}
+              className="md:hidden fixed bottom-0 left-0 right-0 bg-white  z-[9999] rounded-t-2xl shadow-2xl max-h-[75vh] overflow-y-auto"
+            >
+              {/* Drawer Handle */}
+              <div className="flex justify-center pt-3 pb-2">
+                <div className="w-12 h-1.5 bg-gray-300 rounded-full" />
+              </div>
+
+            
+
+              <div className="p-6 pt-2">
+                <div className="flex items-start items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 pr-4">
+                    {project.title}
+                  </h3>
+                  <div className="flex items-center gap-1.5 text-sm whitespace-nowrap">
+                    {project.status === "completed" ? (
+                      <CheckCircle2 size={18} className="text-green-600" />
+                    ) : (
+                      <Clock size={18} className="text-orange-500" />
+                    )}
+                  </div>
+                </div>
+
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  {project.fullDescription}
+                </p>
+
+                <div className="mb-4">
+                  {project.archievements.map((archievement, i) => (
+                    <p className="flex gap-3 mb-3 text-xs text-gray-700" key={i}>
+                      <CheckCircle size={16} className="flex-shrink-0 mt-0.5" />
+                      <span>{archievement}</span>
+                    </p>
+                  ))}
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-3">
+                    Tech Stack
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full text-xs font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  {hasDemo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${
+                        hasCode ? "flex-1" : "w-full"
+                      } flex items-center justify-center gap-2 text-white bg-[#e99d33] px-4 py-3 rounded-sm transition-colors font-medium text-sm`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ExternalLink size={16} /> Live Demo
+                    </a>
+                  )}
+                  {hasCode && (
+                    <a
+                      href={project.code}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${
+                        hasDemo ? "flex-1" : "w-full"
+                      } flex items-center justify-center gap-2 ${
+                        hasDemo
+                          ? "border-2 border-[#e99d33] text-[#e99d33] bg-transparent"
+                          : "text-white bg-[#e99d33]"
+                      } px-4 py-3 rounded-sm transition-colors font-medium text-sm`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github size={16} /> View Code
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* Desktop Hover Popover */}
       {isOpen && (
@@ -144,12 +230,10 @@ function ProjectCard({ project, index }) {
                 {project.status === "completed" ? (
                   <>
                     <CheckCircle2 size={16} className="text-green-600" />
-                    {/* <span className="text-green-600 font-medium">Completed</span> */}
                   </>
                 ) : (
                   <>
                     <Clock size={16} className="text-orange-500" />
-                    {/* <span className="text-orange-500 font-medium">In Progress</span> */}
                   </>
                 )}
               </div>
@@ -185,22 +269,34 @@ function ProjectCard({ project, index }) {
             </div>
 
             <div className="flex gap-3">
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 text-white bg-[#e99d33] px-4 py-3 rounded-sm transition-colors font-medium text-sm"
-              >
-                <ExternalLink size={16} /> Live Demo
-              </a>
-              {/* <a
-                href={project.code}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 border-2 border-black hover:bg-[#FFAF3F] hover:text-white hover:border-[#FFAF3F] px-4 py-3 rounded-sm transition-colors font-medium text-sm"
-              >
-                <Github size={16} /> Code
-              </a> */}
+              {hasDemo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${
+                    hasCode ? "flex-1" : "w-full"
+                  } flex items-center justify-center gap-2 text-white bg-[#e99d33] px-4 py-3 rounded-sm transition-colors font-medium text-sm`}
+                >
+                  <ExternalLink size={16} /> Live Demo
+                </a>
+              )}
+              {hasCode && (
+                <a
+                  href={project.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${
+                    hasDemo ? "flex-1" : "w-full"
+                  } flex items-center justify-center gap-2 ${
+                    hasDemo
+                      ? "border-2 border-[#e99d33] text-[#e99d33] bg-transparent"
+                      : "text-white bg-[#e99d33]"
+                  } px-4 py-3 rounded-sm transition-colors font-medium text-sm`}
+                >
+                  <Github size={16} /> View Code
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -219,8 +315,8 @@ export default function Projects() {
         "AidSync is a comprehensive platform designed to bridge the gap between skilled developers and meaningful volunteer opportunities. Built with modern web technologies, it features real-time collaboration tools, project management dashboards, and impact tracking metrics.",
       image: "/images/aidsync3.png",
       tech: ["Next.js", "TypeScript", "Tailwind", "Node.js"],
-      demo: "https://aidsync.io",
-      code: "https://github.com/yourusername/aidsync",
+      demo: "https://dev.aidsync.io",
+      code: "",
       status: "completed",
       archievements: [
         "Handled UI/UX design, ensuring a clean responsive layouts",
@@ -237,7 +333,7 @@ export default function Projects() {
       image: "/images/portfolio2.png",
       tech: ["React", "Next.js", "TailwindCSS"],
       demo: "https://ngoba-steve-portfolio.vercel.app/",
-      code: "https://github.com/stevejay675/ngoba-steve-portfolio",
+      code: "",
       status: "completed",
       archievements: [
         "Implemented a dynamic projects display using server side data fetching techniques",
@@ -246,7 +342,7 @@ export default function Projects() {
       ],
     },
     {
-      title: "Ledgr",
+      title: "Ledgr App",
       description:
         "A productivity Expense tracking Mobile application for tracking income and expenses for individuals.",
       fullDescription:
@@ -262,7 +358,7 @@ export default function Projects() {
         "Redis",
       ],
       demo: "#",
-      code: "https://github.com/stevejay675/ledgr",
+      code: "https://github.com/stevejay675/ledgr-mobile-app",
       status: "in-progress",
       archievements: [
         "created 6 screens mobile app connected with expo router, showing ui based on auth state",
@@ -295,7 +391,7 @@ export default function Projects() {
         "A sleek and responsive food delivery web application featuring smooth animations, dark mode support, and optimized performance. Showcases menu items, ordering system, and user account management with an intuitive user interface.",
       image: "/images/loopeats2.png",
       tech: ["React", "Next.js", "TailwindCSS"],
-      demo: "dev.loopeats.com",
+      demo: "https://loopeats-web-app.vercel.app/",
       code: "",
       status: "completed",
       archievements: [
@@ -312,8 +408,8 @@ export default function Projects() {
         "QuickerFill is a productivity Chrome extension that automatically fills out forms and web forms with Realistic mocked data, reducing repetitive data entry tasks and saving valuable time for users.",
       image: "/images/quickerfill.png",
       tech: ["HTML5", "CSS3", "Javascript"],
-      demo: "https://aidsync.io",
-      code: "https://github.com/yourusername/aidsync",
+      demo: "",
+      code: "https://github.com/stevejay675/quickerfill-extension/tree/master",
       status: "completed",
       archievements: [
         "Handled UI/UX design, ensuring a clean responsive layouts",
@@ -329,8 +425,8 @@ export default function Projects() {
         "Dunamis Design is a comprehensive Figma design project that envisions a modern IT company platform. It features service booking capabilities and a tech gadgets and electronics sales section, all wrapped in a user-friendly and responsive design.",
       image: "/images/dunamis.png",
       tech: ["Figma", "UI/UX Design"],
-      demo: "https://aidsync.io",
-      code: "https://github.com/yourusername/aidsync",
+      demo: "https://www.figma.com/design/8Evl6XuOS9g5joQqTr1woV/DunamisTech?m=draw",
+      code: "",
       status: "completed",
       archievements: [
         "Handled UI/UX design, ensuring a clean responsive layouts",
@@ -346,8 +442,8 @@ export default function Projects() {
         "A sleek and responsive company website featuring smooth animations, dark mode support, and optimized performance. Showcases services, portfolio, and professional team with an intuitive user interface.",
       image: "/images/looptech2.png",
       tech: ["React", "Next.js", "TailwindCSS"],
-      demo: "https://yourportfolio.com",
-      code: "https://github.com/yourusername/portfolio",
+      demo: "https://luptek.com",
+      code: "",
       status: "completed",
       archievements: [
         "Handled UI/UX design, ensuring a clean responsive layouts",
