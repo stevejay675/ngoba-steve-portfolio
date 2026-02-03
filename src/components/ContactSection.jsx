@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Send, Loader2 } from 'lucide-react';
+import { Send, Loader2, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
@@ -66,7 +66,23 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          <div>
+          <div className="text-center md:hidden">
+          <span className="text-lg font-medium text-gray-700">
+            have a Project in mind?
+          </span>
+          <h2 className="text-5xl md:text-5xl font-black uppercase tracking-tighter mt-3 leading-none"
+            style={{
+              textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            GET In
+            {/* <br className="hidden md:block"/> */}
+            <span className="text-yellow-500 pb-4 ml-3">TOUCH</span>
+          </h2>
+        </div>
+
+          <div className='hidden md:block'>
             <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-none"
                 style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.1)', letterSpacing: '-0.02em' }}>
               GET IN <br className="hidden md:block"/>
@@ -78,48 +94,49 @@ export default function ContactSection() {
             </p>
           </div>
 
-          <div className="bg-white shadow-sm border border-gray-200 py-8 px-6 md:px-8 md:p-10 rounded-md">
+          <div className="bg-white h-[700px]  border border-gray-300 py-8 px-6 md:px-8 md:p-10 rounded-md">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase text-gray-400 ml-1">Full Name</label>
+                  <label className="text-xs font-bold uppercase  ml-1">Full Name</label>
                   <input 
                     required name="name" value={formData.name} onChange={handleChange}
-                    type="text" placeholder="John Doe"
-                    className="w-full px-5 py-4 border-b border-gray-400 focus:border-yellow-500 focus:outline-none transition-all text-gray-900"
+                    type="text" placeholder="Steve jay"
+                    className="w-full px-5 py-4 border-b-[1.5px] border-gray-600 focus:border-yellow-500 focus:outline-none transition-all text-gray-900"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase text-gray-400 ml-1">Email Address</label>
+                  <label className="text-xs font-bold uppercase  ml-1">Email Address</label>
                   <input 
                     required name="email" value={formData.email} onChange={handleChange}
                     type="email" placeholder="john@company.com"
-                    className="w-full px-5 py-4 border-b border-gray-400 focus:border-yellow-500 focus:outline-none transition-all text-gray-900"
+                    className="w-full px-5 py-4 border-b-[1.5px] border-gray-600 focus:border-yellow-500 focus:outline-none transition-all text-gray-900"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase text-gray-400 ml-1">Phone Number</label>
+                <label className="text-xs font-bold uppercase  ml-1">Phone Number</label>
                 <input 
                   required name="phone" value={formData.phone} onChange={handleChange}
                   type="tel" placeholder="+237 XXX XXX XXX"
-                  className="w-full px-5 py-4 border-b border-gray-400 focus:border-yellow-500 focus:outline-none transition-all text-gray-900"
+                  className="w-full px-5 py-4 border-b-[1.5px] border-gray-600 focus:border-yellow-500 focus:outline-none transition-all text-gray-900"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase text-gray-400 ml-1">Message</label>
+                <label className="text-xs font-bold uppercase  ml-1">Message</label>
                 <textarea 
                   required name="message" value={formData.message} onChange={handleChange}
-                  rows={4} placeholder="Tell me about your project..."
-                  className="w-full px-5 py-4 border-b border-gray-400 focus:border-yellow-500 focus:outline-none transition-all text-gray-900 resize-none"
+                  rows={4} placeholder="Enter your message..."
+                  className="w-full px-5 py-4 border-b-[1.5px] border-gray-600 focus:border-yellow-500 focus:outline-none transition-all text-gray-900 resize-none"
                 />
               </div>
 
               {/* Status Feedback */}
               {status.message && (
-                <div className={`p-4 rounded-xl text-sm font-bold ${status.type === 'success' ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'}`}>
+                <div className={`p-4 rounded-sm text-sm font-bold flex gap-2 ${status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-50 text-red-600'}`}>
+                  {status.type === 'success' && <CheckCircle className="w-5 h-5" />}
                   {status.message}
                 </div>
               )}
@@ -127,7 +144,7 @@ export default function ContactSection() {
               <button 
                 disabled={loading}
                 type="submit"
-                className="w-full py-5 bg-black text-white rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-yellow-500 transition-all active:scale-[0.98] disabled:opacity-50"
+                className="w-full py-5 bg-primary text-white rounded-full font-bold flex items-center justify-center gap-3 hover:bg-yellow-500 transition-all active:scale-[0.98] disabled:opacity-50"
               >
                 {loading ? (
                   <>Sending... <Loader2 className="w-5 h-5 animate-spin" /></>

@@ -71,8 +71,8 @@ const SkillCategory = () => {
         </div> */}
 
         <div className="flex flex-col md:flex-row justify-between gap-6">
-          <div className='p-6 border-2'>
-             <h2 className='text-primary font-bold mb-4'>
+          <div className='p-6 border-[1.5px] flex-1'>
+             <h2 className='text-black font-bold mb-4 text-3xl'>
               Frontend
              </h2>
 
@@ -85,8 +85,8 @@ const SkillCategory = () => {
              </div>
           </div>
 
-          <div className='p-6 border-2'>
-             <h2 className='text-primary font-bold mb-4'>
+          <div className='p-6 border-[1.5px] flex-1'>
+             <h2 className='text-black font-bold mb-4 text-3xl'>
               Backend
              </h2>
 
@@ -99,8 +99,8 @@ const SkillCategory = () => {
              </div>
           </div>
 
-          <div className='p-6 border-2'>
-             <h2 className='text-primary font-bold mb-4'>
+          <div className='p-6 border-[1.5px] flex-1'>
+             <h2 className='text-black font-bold mb-4 text-3xl'>
               Tools and Platforms
              </h2>
 

@@ -123,7 +123,7 @@ export default function Navbar() {
                   key={link.name}
                   initial={{ y: 70, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 + (index * 0.1), duration: 0.6, ease: "easeOut" }}
+                  transition={{ delay: 0.3 + (index * 0.1), duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
                 >
                   <a
                     href={link.href}
