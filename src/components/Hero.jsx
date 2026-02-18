@@ -28,7 +28,7 @@ export default function Hero() {
             {/* Social Media Icons */}
             <div className="flex gap-4 pt-4 items-center">
               <a 
-                href="https://github.com/yourusername" 
+                href="https://github.com/stevejay675" 
                 target="_blank"
                 rel="noopener noreferrer"
                 title='Github'
@@ -37,7 +37,7 @@ export default function Hero() {
                 <Github size={24} />
               </a>
               <a 
-                href="https://linkedin.com/in/yourusername" 
+                href="https://linkedin.com/in/stevejay675" 
                 target="_blank"
                 title='LinkedIn'
                 rel="noopener noreferrer"
@@ -46,7 +46,7 @@ export default function Hero() {
                 <Linkedin size={24} />
               </a>
               <a 
-                href="https://twitter.com/yourusername" 
+                href="https://wa.me/+237653282022?text=" 
                 target="_blank"
                 title='Whatsapp'
                 rel="noopener noreferrer"
