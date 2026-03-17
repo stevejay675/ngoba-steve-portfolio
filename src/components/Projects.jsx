@@ -329,7 +329,7 @@ export default function Projects() {
       description:
         "A multilingual tech blog built with Next.js, markdowns, and TailwindCSS, featuring articles, tutorials, and Latest android tips and tricks.",
       fullDescription:
-        "",
+        "Jaytechhub Blog is a sleek and responsive multilingual tech blog built with Next.js, markdowns, and TailwindCSS. It features a clean design, smooth animations, and optimized performance. The blog showcases articles, tutorials, and the latest Android tips and tricks with an intuitive user interface.",
       image: "/images/jaytechhub.png",
       tech: ["React", "Next.js", "TailwindCSS"],
       demo: "https://jaytechhub-seven.vercel.app/en",
