@@ -144,7 +144,7 @@ export default function ContactSection() {
               <button 
                 disabled={loading}
                 type="submit"
-                className="w-full py-5 bg-primary text-white rounded-full font-bold flex items-center justify-center gap-3 hover:bg-yellow-500 transition-all active:scale-[0.98] disabled:opacity-50"
+                className="w-full py-5 bg-primary text-white rounded-full font-bold flex items-center justify-center gap-3 hover:bg-yellow-500 transition-all active:scale-[0.98] !disabled:opacity-50 cursor-pointer !disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>Sending... <Loader2 className="w-5 h-5 animate-spin" /></>

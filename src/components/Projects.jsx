@@ -325,21 +325,21 @@ export default function Projects() {
       ],
     },
     {
-      title: "Portfolio Website",
+      title: "Jaytechhub Blog",
       description:
-        "A modern personal portfolio designed with Next.js and TailwindCSS showcasing my skills and work.",
+        "A multilingual tech blog built with Next.js, markdowns, and TailwindCSS, featuring articles, tutorials, and Latest android tips and tricks.",
       fullDescription:
-        "A sleek and responsive portfolio website featuring smooth animations, dark mode support, and optimized performance. Showcases projects, skills, and professional experience with an intuitive user interface.",
-      image: "/images/portfolio2.png",
+        "",
+      image: "/images/jaytechhub.png",
       tech: ["React", "Next.js", "TailwindCSS"],
-      demo: "https://ngoba-steve-portfolio.vercel.app/",
+      demo: "https://jaytechhub-seven.vercel.app/en",
       code: "",
       status: "completed",
       archievements: [
-        "Implemented a dynamic projects display using server side data fetching techniques",
+        "Handled UI/UX design, ensuring a clean responsive layouts",
         "Implemented Smooth theme mode, to allow users choose whats best",
-        "did the overall API integration, server side data fetching, server side actions in a robust way",
-      ],
+        "implemented SSG on markdown files, to allow for fast loading, and easy content management",
+      ]
     },
     {
       title: "Ledgr App",
