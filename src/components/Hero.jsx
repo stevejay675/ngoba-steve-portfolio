@@ -62,7 +62,7 @@ export default function Hero() {
                 <Mail size={24} />
               </a>
               <a 
-                href="ngoba-steve-cv.pdf"
+                href="/CV_Ngoba_Steve_Jones.pdf"
                 title='View Resume'
                 className="w-12 h-12 rounded-full flex items-center justify-center border-2  text-gray-700 border-[#FFAF3F] hover:text-[#FFAF3F] transition-colors duration-200"
               >
