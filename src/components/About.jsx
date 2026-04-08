@@ -86,7 +86,7 @@ export default function About() {
             </p>
 
             <div className="flex items-center gap-3">
-                <button className="py-3 px-6 rounded-full w-full md:w-fit  bg-black hover:bg-[#ff9f1f] text-white cursor-pointer transition" onClick={() => router.push('/CV_Ngoba_Steve_Jones.pdf')}>View my Resume</button>
+                <button className="py-3 px-6 rounded-full w-full md:w-fit  bg-black hover:bg-[#ff9f1f] text-white cursor-pointer transition" onClick={() => router.push('/CV_Ngoba_Steve_Jones_Ntong.pdf')}>View my Resume</button>
                 <img src="/images/sh-b.png" alt="Signature" className="w-auto h-16 object-contain" />
             </div>
           </div>

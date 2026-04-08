@@ -79,7 +79,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="/CV_Ngoba_Steve_Jones.pdf"
+                href="/CV_Ngoba_Steve_Jones_Ntong.pdf"
                 target="_blank"
                 className="bg-yellow-500 text-white rounded-full px-6 py-2 font-semibold hover:bg-[#ff9f1f] transition-colors duration-200"
               >
@@ -149,7 +149,7 @@ export default function Navbar() {
             >
               <div className="h-[1px] w-full bg-black/20" />
               <div className="flex gap-8 font-mono text-xs text-black/60 tracking-widest uppercase">
-              <a href="/CV_Ngoba_Steve_Jones.pdf" target="_blank" className="underline transition-colors">Download my CV</a>
+              <a href="/CV_Ngoba_Steve_Jones_Ntong.pdf" target="_blank" className="underline transition-colors">Download my CV</a>
                 <a href="" target='_blank' className='underline transition-colors'>Github</a>
                 <a href="#linkedin" className='underline transition-colors'>LinkedIn</a>
               </div>

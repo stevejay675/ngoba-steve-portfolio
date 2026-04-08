@@ -9,7 +9,7 @@ export default function Hero() {
           {/* Left Content */}
           <div className="space-y-6">
             <div className="space-y-2">
-              <p className="text-[#FFAF3F] text-lg font-medium">Hello, I'm</p>
+              <p className="text-[#FFAF3F] text-lg font-medium">Hello, {"I'm"}</p>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                 Ngoba Steve Jones
               </h1>
@@ -62,7 +62,7 @@ export default function Hero() {
                 <Mail size={24} />
               </a>
               <a 
-                href="/CV_Ngoba_Steve_Jones.pdf"
+                href="/CV_Ngoba_Steve_Jones_Ntong.pdf"
                 title='View Resume'
                 className="w-12 h-12 rounded-full flex items-center justify-center border-2  text-gray-700 border-[#FFAF3F] hover:text-[#FFAF3F] transition-colors duration-200"
               >
