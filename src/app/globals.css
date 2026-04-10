@@ -5,6 +5,14 @@
   --foreground: #171717;
   --color-primary: #FFAF3F;
   --color-footer: hsl(35, 100%, 52%);
+  
+}
+
+.dark-theme {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-primary: #FFAF3F;
+  --color-footer: hsl(35, 100%, 52%);
 }
 
 @theme inline {

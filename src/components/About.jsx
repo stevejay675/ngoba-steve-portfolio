@@ -1,15 +1,13 @@
-'use client';
+"use client";
 import React from "react";
 import { Award, GraduationCap } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function About() {
-
   const router = useRouter();
   return (
-    <section className="bg-gray-50 py-20  relative" id="about">
-
-        {/* <svg
+    <section className="bg-gray-50 pt-20  relative overflow-hidden" id="about">
+      {/* <svg
         className="absolute top-0 left-0 w-full text-white"
         viewBox="0 0 500 50"
         preserveAspectRatio="none"
@@ -17,16 +15,14 @@ export default function About() {
         <path d="M0,30 Q125,0 250,30 T500,30 V0 H0 Z" fill="currentColor" />
       </svg> */}
       <div className="max-w-7xl mx-auto px-4 z-10 sm:px-6 lg:px-8">
-        
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="text-lg font-medium">
-            Get to know more
-          </span>
-          <h2 className="text-5xl md:text-5xl font-black uppercase tracking-tighter mt-3 leading-none"
+          <span className="text-lg font-medium">Get to know more</span>
+          <h2
+            className="text-5xl md:text-5xl font-black uppercase tracking-tighter mt-3 leading-none"
             style={{
-              textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
-              letterSpacing: '-0.02em'
+              textShadow: "2px 2px 0px rgba(0,0,0,0.5)",
+              letterSpacing: "-0.02em",
             }}
           >
             About
@@ -72,10 +68,7 @@ export default function About() {
 
             {/* Description */}
             <p className="text-gray-600 text-lg leading-relaxed">
-              I'm a{" "}
-              <span className=" font-semibold">
-                software engineer{" "}
-              </span> 
+              I'm a <span className=" font-semibold">software engineer </span>
               with a focus on frontend development and a growing exposure to
               full-stack systems. I build modern, responsive web interfaces
               using technologies like React, Next.js, Tailwind CSS, and
@@ -86,11 +79,33 @@ export default function About() {
             </p>
 
             <div className="flex items-center gap-3">
-                <button className="py-3 px-6 rounded-full w-full md:w-fit  bg-black hover:bg-[#ff9f1f] text-white cursor-pointer transition" onClick={() => router.push('/CV_Ngoba_Steve_Jones_Ntong.pdf')}>View my Resume</button>
-                <img src="/images/sh-b.png" alt="Signature" className="w-auto h-16 object-contain" />
+              <button
+                className="py-3 px-6 rounded-full w-full md:w-fit  bg-black hover:bg-[#ff9f1f] text-white cursor-pointer transition"
+                onClick={() => router.push("/CV_Ngoba_Steve_Jones_Ntong.pdf")}
+              >
+                View my Resume
+              </button>
+              <img
+                src="/images/sh-b.png"
+                alt="Signature"
+                className="w-auto h-16 object-contain"
+              />
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Wave Divider */}
+      <div className="relative h-24">
+        <svg
+          className="absolute bottom-0 w-full h-full"
+          viewBox="0 0 1440 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path d="M0,80 C360,0 1080,140 1440,40 L1440,120 L0,120 Z" fill="#ffffff" />
+        </svg>
       </div>
     </section>
   );

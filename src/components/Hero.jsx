@@ -53,7 +53,7 @@ export default function Hero() {
       id="home"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center min-h-screen py-12">
+        <div className="grid md:grid-cols-2 gap-12 items-center min-h-screen pb-0 md:pb-0 pt-12">
 
           {/* Left Content */}
           <div className="space-y-6">
@@ -101,18 +101,18 @@ export default function Hero() {
             </div>
 
             {/* Mobile image — pops AFTER icons */}
-            <motion.div
+            <div
               className="md:hidden flex justify-center mt-4"
-              variants={imageVariants.mobile}
-              initial="hidden"
-              animate="visible"
+              // variants={imageVariants.mobile}
+              // initial="hidden"
+              // animate="visible"
             >
               <img
                 src="/images/banner3.png"
                 alt="Developer workspace"
                 className="w-full max-w-sm h-auto"
               />
-            </motion.div>
+            </div>
           </div>
 
           {/* Desktop image — pops BEFORE icons (slight head start) */}

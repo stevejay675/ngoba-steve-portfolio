@@ -301,7 +301,7 @@ function ProjectCard({ project, index }) {
           </div>
         </div>
       )}
-    </>
+    </> 
   );
 }
 
@@ -310,18 +310,18 @@ export default function Projects() {
     {
       title: "AidSync",
       description:
-        "A platform that connects developers and volunteers to collaborate on impactful projects.",
+        "A B2B ticket based support platform that connects users facing technical IT problems to expert Engineers, featuring real time chat, notifications and payments integration",
       fullDescription:
-        "AidSync is a comprehensive platform designed to bridge the gap between skilled developers and meaningful volunteer opportunities. Built with modern web technologies, it features real-time collaboration tools, project management dashboards, and impact tracking metrics.",
+        "Aidsync is a B2B ticket-based support platform that connects users facing technical IT problems to expert engineers. It features real-time chat, notifications, and payments integration, providing a seamless experience for both users and support professionals.",
       image: "/images/aidsync3.png",
       tech: ["Next.js", "TypeScript", "Tailwind", "Node.js"],
       demo: "https://dev.aidsync.io",
       code: "",
       status: "completed",
       archievements: [
-        "Handled UI/UX design, ensuring a clean responsive layouts",
-        "Implemented Smooth theme mode, to allow users choose whats best",
-        "did the overall API integration, server side data fetching, server side actions in a robust way",
+        "Successfully implemented real-time chat functionality using WebSockets, enabling instant communication between users and support engineers.",
+        "Implemented a robust notification system to keep users informed about ticket updates and responses.",
+        "Integrated secure payment processing to facilitate transactions between users and support professionals.",
       ],
     },
     {
@@ -454,7 +454,23 @@ export default function Projects() {
   ];
 
   return (
-    <section className="bg-gray-50 py-20" id="projects">
+    <section className="bg-gray-50 pt-32 pb-20 relative" id="projects">
+      {/* Wave Divider Restored */}
+      <div className="absolute w-full top-0 h-24 overflow-hidden">
+        <svg 
+          className="w-full h-[120px]" 
+          viewBox="0 0 1440 120" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg" 
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0,0 L1440,0 L1440,20 Q720,150 0,20 Z" 
+            fill="white" 
+          />
+        </svg>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-lg font-medium text-gray-700">
@@ -478,6 +494,8 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      
     </section>
   );
 }
